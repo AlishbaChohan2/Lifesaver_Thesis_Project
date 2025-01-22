@@ -1,0 +1,105 @@
+
+.menu{
+    background-color: #A8C449; 
+    /* upper wala */
+    
+ 
+    /* background-color: #E1EAD0; */
+    color:white;
+
+   /* color: #23512F; */
+
+    height: 40px;
+    padding-top: 6px;
+    font-weight: 800;
+
+
+}
+.menub a{
+    color:white;
+}
+.menub a:hover{
+    color:black;
+}
+.menub{
+    padding-top: 10px;
+}
+
+/* .content{
+    min-height: 500px;
+} */
+.ss{
+    height:500px;
+    width:90%;
+    margin:auto;
+}
+
+.ss img{
+    height: 490px;
+}
+
+.menu-butt{
+    width:70px;
+    background-color:white;
+    color:#A8C449;
+    border:none;
+    border-radius:10px;
+    height:30px;
+    padding-top:1px;
+
+}
+.ab{
+    background-image: url("images/about-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width:90%;
+    min-height: 600px;
+    margin: auto;
+    padding-top: 100px;
+    padding-bottom: 150px;
+
+}
+
+.ab-text{
+    margin-left:100px ;
+    position: relative;
+}
+.ab-text p{
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.blog{
+    width:90%;
+    margin:auto;
+    /* border:1px solid blue; */
+    /* margin-bottom: 10px; */
+    /* background-color:rgb(236, 237, 253); */
+    /* margin-left: 50px; */
+    
+
+}
+
+.signup{
+    width:35%;
+    margin:auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color:rgb(246, 248, 246);
+    min-height:550px;
+    border-radius:20px;
+    
+
+
+}
+
+.team-edit{
+    background: #f9f9f9;
+    width:90%;
+    margin:auto;
+    padding-top: 50px;
+}
+
+
+/* admin */
+
