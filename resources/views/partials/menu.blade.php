@@ -9,11 +9,11 @@
     <div class="col-sm menu menub"> -->
         <!-- <a href="{{ url('/') }}">Home</a> -->
 
-        
+
     <div class="col-sm menu text-end">
     </div>
-    <div class="col-sm menu menub text-end" >
-        <a href="#ab">Call Life Saver</a>
+    <div class="col-sm menu menub text-end "  >
+      <a href="{{ url('/call_lifesaver') }}" id="menu-butt"> CALL LIFESAVER!</a> 
     </div>
 
 
