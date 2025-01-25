@@ -58,7 +58,7 @@ function updateLocationInput(latLng) {
     geocoder.geocode({ location: latLng }, function (results, status) {
         if (status === "OK" && results[0]) {
             const address = results[0].formatted_address;
-            document.getElementById("pres_add").value = address;
+            document.getElementById("location").value = address;
         } else {
             console.error("Geocode was not successful for the following reason: " + status);
         }

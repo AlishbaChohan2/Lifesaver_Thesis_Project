@@ -15,10 +15,10 @@
                 <p style="font-size:30px;font-weight:bold;text-align:center;margin-top:10px; line-height:35px; color:rgb(60, 60, 60);"
                     class="text-uppercase"> Call A life saver!</p>
 
-                <form action="c_signup.php" method="POST">
+                <form action="{{ route('store.form') }}" method="POST">
                     <br>
                     <div class="container-sm">
-
+                    @csrf
                         <input class="form-control" type="text" name="name" id="name" required
                             placeholder="Patient Name*"><br>
                         <input class="form-control" type="text" name="contact" id="contact" required
@@ -28,16 +28,21 @@
                         <input class="form-control" type="email" name="email" id="email" required
                             placeholder="Email*"><br>
                         <!-- <input class="form-control" type="text" name="city" id="city" required placeholder="City"><br> -->
-                        <input class="form-control" type="text" name="pres_add" id="pres_add" required
+                        <input class="form-control" type="text" name="location" id="location" required
                             placeholder="Location*"><br>
                         <div id="map" style="height: 150px; width: 100%;"></div>
                         <br>
-                        <textarea class="form-control" name="symp" id="symp" style="min-height:150px;" maxlength="250"
+                        <textarea class="form-control" name="symptoms" id="symptoms" style="min-height:150px;" maxlength="250"
                             placeholder="Describe your/patient's Symptoms Briefly*" required></textarea><br>
 
 
                         <input type="submit" value="ASK FOR HELP" class="btn btn-danger bold">
                         <br<br>
+
+
+                        @if(session('success'))
+                            <p style="color: green;">{{ session('success') }}</p>
+                        @endif
 
                     </div>
 
