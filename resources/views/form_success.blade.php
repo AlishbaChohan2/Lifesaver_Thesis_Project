@@ -3,6 +3,13 @@
 @section('title', 'Submission Successful')
 
 @section('content')
+
+@if (session('data'))
+    @php
+        $data = session('data');
+    @endphp
+@endif
+
 <div class="row justify-content-center">
     <div class="col-md-6 text-center pt-5 pb-5">
         <div class="p-5">

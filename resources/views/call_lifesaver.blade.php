@@ -15,17 +15,35 @@
                 <p style="font-size:30px;font-weight:bold;text-align:center;margin-top:10px; line-height:35px; color:rgb(60, 60, 60);"
                     class="text-uppercase"> Call A life saver!</p>
 
-                <form action="{{ route('store.form') }}" method="POST">
+
+                @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                
+                <form action="{{ url('/')}}/call_lifesaver " method="POST">
                     <br>
                     <div class="container-sm">
+                   
                     @csrf
-
-                    @if (session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                    @endif
-
                         <input class="form-control" type="text" name="name" id="name" required
                             placeholder="Patient Name*"><br>
                         <input class="form-control" type="text" name="contact" id="contact" required
@@ -57,9 +75,9 @@
                         <br<br>
 
 
-                        @if(session('success'))
+                        <!-- @if(session('success'))
                             <p style="color: green;">{{ session('success') }}</p>
-                        @endif
+                        @endif -->
 
                     </div>
 

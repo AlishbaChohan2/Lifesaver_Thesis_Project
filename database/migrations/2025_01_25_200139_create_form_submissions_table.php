@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('location');
             $table->text('symptoms');
-            $table->string('ambulance_needed')->default('no');
-            $table->string('police_needed')->default('no');
-            $table->text('advice');
+            $table->enum('ambulance_needed', ['yes', 'no']);
+            $table->enum('police_needed', ['yes', 'no']);
+            $table->string('advice')->default('none for now');
            
             $table->timestamps();
         });

@@ -4,22 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 
 Route::get('/', function () {
-    return view('home');
+    return view('home'); // Home page
 });
 
-// Route to show the form
+
+// Handle form submission
+
 Route::get('/call_lifesaver', [FormController::class, 'showForm'])->name('show.form');
-
-// Route to handle the form submission
-Route::post('/call_lifesaver', [FormController::class, 'storeForm'])->name('store.form');
-
-// Route to show the success page
+Route::post('/call_lifesaver', [FormController::class, 'storeForm']);
 
 Route::get('/form-success', function () {
-    $data = session('data'); // Retrieve session data
-    if (!$data) {
-        return redirect('/call_lifesaver')->with('error', 'No data found. Please fill out the form again.'); // Redirect with error if session data is missing
-    }
-    session()->flush(); // Clear session data after success page
-    return view('form_success', ['data' => $data]); // Pass session data to the view
+    return view('form_success');
 })->name('form.success');
