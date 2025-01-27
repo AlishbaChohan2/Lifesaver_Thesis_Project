@@ -19,6 +19,13 @@
                     <br>
                     <div class="container-sm">
                     @csrf
+
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+
                         <input class="form-control" type="text" name="name" id="name" required
                             placeholder="Patient Name*"><br>
                         <input class="form-control" type="text" name="contact" id="contact" required
@@ -35,8 +42,18 @@
                         <textarea class="form-control" name="symptoms" id="symptoms" style="min-height:150px;" maxlength="250"
                             placeholder="Describe your/patient's Symptoms Briefly*" required></textarea><br>
 
+                            <div class="form-group text-left">
+                                <label>Ambulance Needed?</label>
+                                <input type="radio" name="ambulance_needed" value="yes" required> Yes
+                                <input type="radio" name="ambulance_needed" value="no" required> No
+                            </div>
+                            <div class="form-group text-left">
+                                <label>Police Needed?</label>
+                                <input type="radio" name="police_needed" value="yes" required> Yes
+                                <input type="radio" name="police_needed" value="no" required> No
+                            </div>
 
-                        <input type="submit" value="ASK FOR HELP" class="btn btn-danger bold">
+                        <input type="submit" value="ASK FOR HELP" class="btn btn-danger btn-lg bold">
                         <br<br>
 
 

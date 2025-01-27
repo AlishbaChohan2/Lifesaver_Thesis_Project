@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('email');
             $table->string('location');
             $table->text('symptoms');
+            $table->string('ambulance_needed')->default('no');
+            $table->string('police_needed')->default('no');
+            $table->text('advice');
+           
             $table->timestamps();
         });
     }
