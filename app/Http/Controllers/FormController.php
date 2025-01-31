@@ -4,13 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FormSubmission;
+use App\Services\TwilioService;
 use OpenAI;
 
 class FormController extends Controller
 {
+    protected $twilio;
     public function showForm()
     {
         return view('call_lifesaver');  
+    }
+
+    public function __construct(TwilioService $twilio)
+    {
+        $this->twilio = $twilio;
     }
 
     public function storeForm(Request $request)
@@ -64,6 +71,16 @@ class FormController extends Controller
                 'police_needed' => $validated['police_needed'],
                 'advice' => $advice, 
             ]);
+
+            $message = "New Emergency Request\n"
+            . "Name: " . $request->name . "\n"
+            . "Age: " . $request->age . "\n"
+            . "Contact: " . $request->contact . "\n"
+            . "Symptoms: " . $request->symptoms . "\n"
+            . "Ambulance Needed: " . $request->ambulance_needed . "\n"
+            . "Police Needed: " . $request->police_needed . "\n";
+
+            $this->twilio->sendSms('+36204928249', $message);
 
             // Redirect to success page with form submission data
             return redirect()->route('form.success')->with('data', $formSubmission);
