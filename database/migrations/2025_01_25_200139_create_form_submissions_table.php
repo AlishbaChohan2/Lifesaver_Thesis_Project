@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('symptoms');
             $table->enum('ambulance_needed', ['yes', 'no']);
             $table->enum('police_needed', ['yes', 'no']);
-            $table->string('advice')->default('none for now');
+            $table->longText('advice')->default('none for now');
            
             $table->timestamps();
         });

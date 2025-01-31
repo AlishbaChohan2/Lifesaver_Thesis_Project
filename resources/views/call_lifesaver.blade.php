@@ -72,7 +72,7 @@
                             </div>
 
                         <input type="submit" value="ASK FOR HELP" class="btn btn-danger btn-lg bold">
-                        <br<br>
+                        <br><br>
 
 
                         <!-- @if(session('success'))
