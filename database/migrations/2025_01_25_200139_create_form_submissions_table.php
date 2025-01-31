@@ -12,8 +12,9 @@ return new class extends Migration
         Schema::create('form_submissions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('contact');
             $table->integer('age');
+            $table->enum('gender', ['female', 'male']);
+            $table->string('contact');
             $table->string('email');
             $table->string('location');
             $table->text('symptoms');

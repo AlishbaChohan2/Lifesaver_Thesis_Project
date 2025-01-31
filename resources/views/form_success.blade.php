@@ -15,18 +15,20 @@
                     Your request has been submitted successfully!
                 </p>
                 <p style="font-size:18px;">
-                    <strong>Request ID: LS-CAS-{{ $data->id }}</strong>
+                    <strong>Request ID: <span style="color:black;">LS-CAS-{{ $data->id }}</span></strong>
                 </p>
                 <p style="font-size:18px;">
-                    Thank you for your submission. We have contacted the relevant services (if any requested). You can find the details and medical advice below:
+                    Thank you for your submission. We have contacted the relevant services (if any requested).
+                    <br> You can find the details and medical advice below:
                 </p>
                 <div class="row border rounded p-4 mt-4" style="background-color: #f9f9f9;">
                     <!-- Left Column: User Data -->
                     <div class="col-md-6 text-left">
                         <h4 class="mb-3 text-center" style="color: rgb(60, 60, 60); font-weight: bold;">Your Information</h4>
-                        <p><strong>Name:</strong> {{ $data->name }}</p>
-                        <p><strong>Contact:</strong> {{ $data->contact }}</p>
+                        <p><strong>Name:</strong> {{ $data->name }}</p>       
                         <p><strong>Age:</strong> {{ $data->age }}</p>
+                        <p><strong>Gender:</strong> {{ $data->gender }}</p>
+                        <p><strong>Contact:</strong> {{ $data->contact }}</p>
                         <p><strong>Email:</strong> {{ $data->email }}</p>
                         <p><strong>Location:</strong> {{ $data->location }}</p>
                         <p><strong>Symptoms:</strong> {{ $data->symptoms }}</p>

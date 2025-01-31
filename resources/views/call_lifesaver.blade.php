@@ -46,10 +46,16 @@
                     @csrf
                         <input class="form-control" type="text" name="name" id="name" required
                             placeholder="Patient Name*"><br>
-                        <input class="form-control" type="text" name="contact" id="contact" required
-                            placeholder="Contact*"><br>
                         <input class="form-control" type="number" maxlength="2" name="age" id="age" required
                             placeholder="Patient Age*"><br>
+                        
+                        <div class="form-group text-left">
+                                <label>Patient Gender  </label>
+                                <input type="radio" name="gender" value="female" required> Female
+                                <input type="radio" name="gender" value="male" required> Male
+                        </div>
+                        <input class="form-control" type="text" name="contact" id="contact" required
+                            placeholder="Contact*"><br>
                         <input class="form-control" type="email" name="email" id="email" required
                             placeholder="Email*"><br>
                         <!-- <input class="form-control" type="text" name="city" id="city" required placeholder="City"><br> -->

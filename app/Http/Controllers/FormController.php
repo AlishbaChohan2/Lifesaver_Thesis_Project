@@ -18,8 +18,9 @@ class FormController extends Controller
         // Validate the form input
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'contact' => 'required|string|max:255',
             'age' => 'required|integer|min:1',
+            'gender'=> 'required|in:female,male',
+            'contact' => 'required|string|max:255',
             'email' => 'required|email',
             'location' => 'required|string|max:500',
             'symptoms' => 'required|string|max:250',
@@ -33,11 +34,10 @@ class FormController extends Controller
 
             // Create the user message content for the prompt
             $userMessage = $validated['ambulance_needed'] === 'yes'
-                ? "A person is {$validated['age']} years old and has the following symptoms: {$validated['symptoms']}. An ambulance is on the way. Provide 3 concise urgent first-aid advice separated by newline."
-                : "A person is {$validated['age']} years old and has the following symptoms: {$validated['symptoms']}. No ambulance is needed. Provide 3 concise general medical advice in 3 bullted points separated by newline.";
+                ? "A {$validated['gender']} is {$validated['age']} years old and has the following symptoms: {$validated['symptoms']}. An ambulance is on the way. Provide 3 concise urgent first-aid advice separated by newline."
+                : "A {$validated['gender']} is {$validated['age']} years old and has the following symptoms: {$validated['symptoms']}. No ambulance is needed. Provide 3 concise general medical advice in 3 bullted points separated by newline.";
 
-            // Make the API request to OpenAI
-            // Make the API request to OpenAI (adjusted for 'chat' API)
+           
             $response = $client->chat()->create([
                 'model' => 'gpt-3.5-turbo',
                 'messages' => [
@@ -54,14 +54,15 @@ class FormController extends Controller
             // Save the data into the database
             $formSubmission = FormSubmission::create([
                 'name' => $validated['name'],
-                'contact' => $validated['contact'],
                 'age' => $validated['age'],
+                'gender'=> $validated['gender'],
+                'contact' => $validated['contact'],
                 'email' => $validated['email'],
                 'location' => $validated['location'],
                 'symptoms' => $validated['symptoms'],
                 'ambulance_needed' => $validated['ambulance_needed'],
                 'police_needed' => $validated['police_needed'],
-                'advice' => $advice, // Store ChatGPT-generated advice
+                'advice' => $advice, 
             ]);
 
             // Redirect to success page with form submission data

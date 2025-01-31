@@ -10,6 +10,6 @@ class FormSubmission extends Model
 
     protected $table = 'form_submissions'; 
     protected $fillable = [
-        'name', 'contact', 'age', 'email', 'location', 'symptoms', 'ambulance_needed', 'police_needed', 'advice',
+        'name', 'contact', 'age', 'gender', 'email', 'location', 'symptoms', 'ambulance_needed', 'police_needed', 'advice',
     ];
 }
