@@ -12,7 +12,7 @@
             font-family: Arial, sans-serif;
         }
         .dashboard {
-            max-width: 90%;
+            max-width: 95%;
             margin: 50px auto;
             background: white;
             padding: 20px;
@@ -27,12 +27,14 @@
             border-radius: 5px;
             text-decoration: none;
             display: inline-block;
+            
         }
         .logout-btn:hover {
             background-color: #c82333;
         }
-        .table thead {
-            background-color: #f8f9fa;
+        .table thead tr th {
+            background-color:rgb(178, 204, 92);
+            
         }
     </style>
 </head>
@@ -41,15 +43,13 @@
 <div class="dashboard text-center">
     <h1 class="mb-4" style="color:#A8C449;">Admin Dashboard</h1>
     
-    <p>Welcome, <strong>{{ session('admin_name') }}</strong></p>
+    <p>Welcome, <strong>{{ session('admin_name') }} !</strong> </p>
+   <a href="{{ route('logout.admin') }}" class="btn btn-sm logout-btn mt-4">Logout</a>
+    <h3 class="mt-4">User Records     </h3>
     
-    <h4 class="mt-4">Total Form Submissions: 
-        <!-- <span class="badge bg-primary"></span> -->
-    </h4>
-    
-    <h5 class="mt-4">Latest Submissions:</h5>
+    <h5 class="mt-4">Total Records: <span class="badge bg-primary">{{ $submissions->count() }}</span></h5>
     <div class="table-responsive mt-3">
-        <table class="table table-striped border">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Sr. No.</th>
@@ -67,12 +67,31 @@
                 </tr>
             </thead>
             <tbody>
-               
-            </tbody>
+            @forelse($submissions as $index => $submission)
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $submission->id }}</td>
+                    <td>{{ $submission->created_at->format('d-m-Y H:i') }}</td>
+                    <td>{{ $submission->name }}</td>
+                    <td>{{ $submission->age }}</td>
+                    <td>{{ ucfirst($submission->gender) }}</td>
+                    <td>{{ $submission->contact }}</td>
+                    <td>{{ $submission->email }}</td>
+                    <td>{{ $submission->location }}</td>
+                    <td>{{ $submission->symptoms }}</td>
+                    <td>{{ $submission->ambulance_needed ? 'Yes' : 'No' }}</td>
+                    <td>{{ $submission->police_needed ? 'Yes' : 'No' }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="12" class="text-center">No submissions found.</td>
+                </tr>
+            @endforelse
+        </tbody>
         </table>
     </div>
 
-    <a href="{{ route('logout.admin') }}" class="btn logout-btn mt-4">Logout</a>
+    
 </div>
 
 </body>

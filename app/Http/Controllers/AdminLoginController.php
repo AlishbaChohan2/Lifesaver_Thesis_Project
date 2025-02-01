@@ -49,7 +49,10 @@ class AdminLoginController extends Controller
 
         
 
-        return view('admin_dashboard');
+        $submissions = FormSubmission::latest()->get(); 
+
+        // Pass data to the view
+        return view('admin_dashboard', compact('submissions'));
     }
 
     // Admin logout
