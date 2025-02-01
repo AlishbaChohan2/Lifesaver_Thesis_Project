@@ -1,6 +1,6 @@
 
     <div class="col-sm menu menub"><a href="{{ url('/') }}">Home</a></div>
-    <div class="col-sm menu menub"><a href="#ab">About Us</a></div>
+    <div class="col-sm menu menub"><a href="{{ url('/admin') }}">Admin</a></div>
     <div class="col-sm menu menub"></div>
     <div class="col-sm menu menub"></div>
     <!-- 
