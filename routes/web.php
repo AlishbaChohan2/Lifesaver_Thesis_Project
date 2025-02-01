@@ -20,9 +20,5 @@ Route::get('/form-success', function () {
 // Admin routes
 Route::get('/admin', [AdminLoginController::class, 'showAdmin'])->name('show.admin');
 Route::post('/admin', [AdminLoginController::class, 'loginAdmin'])->name('login.admin');
-
-// Admin dashboard route with validation for logged-in status
 Route::get('/admin_dashboard', [AdminLoginController::class, 'showDashboard'])->name('admin.dashboard');
-
-// Admin logout route
 Route::get('/admin/logout', [AdminLoginController::class, 'logoutAdmin'])->name('logout.admin');

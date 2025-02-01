@@ -3,14 +3,14 @@
 @section('title', 'Welcome to Life Saver')
 
 @section('content')
-    <!-- Slideshow -->
+   
     <div class="row">
         <div class="col-sm">
             @include('partials.slideshow')
         </div>
     </div>
 
-    <!-- About Section -->
+
     <div class="row">
         <div class="col-sm">
             <div class="ab" id="ab">
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <!-- Team Section -->
+
     <div class="row">
         <div class="col-sm mt-3 mb-3">
             <div class="team-edit">

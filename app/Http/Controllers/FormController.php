@@ -35,10 +35,8 @@ class FormController extends Controller
         ]);
 
         try {
-            // ChatGPT API integration (Directly in Controller)
             $client = OpenAI::client(config('services.openai.key'));
 
-            // Create the user message content for the prompt
             $userMessage = $validated['ambulance_needed'] === 'yes'
                 ? "A {$validated['gender']} is {$validated['age']} years old and has the following symptoms: {$validated['symptoms']}. An ambulance is on the way. Provide 3 concise urgent first-aid advice separated by newline."
                 : "A {$validated['gender']} is {$validated['age']} years old and has the following symptoms: {$validated['symptoms']}. No ambulance is needed. Provide 3 concise general medical advice in 3 bullted points separated by newline.";
@@ -54,10 +52,10 @@ class FormController extends Controller
             ]);
 
 
-            // Extract the advice from the response
+         
             $advice = $response['choices'][0]['message']['content'] ?? 'No advice available.';
 
-            // Save the data into the database
+
             $formSubmission = FormSubmission::create([
                 'name' => $validated['name'],
                 'age' => $validated['age'],
@@ -81,11 +79,11 @@ class FormController extends Controller
 
             $this->twilio->sendSms('+36204928249', $message);
 
-            // Redirect to success page with form submission data
+   
             return redirect()->route('form.success')->with('data', $formSubmission);
 
         } catch (\Exception $e) {
-            // Handle exceptions, log the error, and flash error message to the session
+          
             \Log::error('Error while submitting form: ' . $e->getMessage());
             return redirect()->back()->with('error', $e->getMessage());
         }

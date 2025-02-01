@@ -109,21 +109,16 @@
 <script >
     document.getElementById('searchForm').addEventListener('submit', function(event) {
     event.preventDefault();
-
-    // Get the email search value
     const emailSearch = document.getElementById('emailSearch').value.toLowerCase();
 
-    // Get all rows in the table
     const rows = document.querySelectorAll('#submissionsTable tbody tr');
 
     rows.forEach(function(row) {
-        // Get email from the row's data-email attribute
+
         const email = row.getAttribute('data-email').toLowerCase();
 
-        // Check if the email matches the search query
         const matchesEmail = emailSearch ? email.includes(emailSearch) : true;
 
-        // Toggle row visibility based on email match
         if (matchesEmail) {
             row.style.display = '';
         } else {
@@ -137,10 +132,7 @@
 
 <!-- Include the clear search script -->
 <script> document.getElementById('clearSearch').addEventListener('click', function() {
-    // Clear search input values
     document.getElementById('emailSearch').value = '';
-
-    // Trigger search form submit to reset the table
     document.getElementById('searchForm').submit();
 });
 </script>

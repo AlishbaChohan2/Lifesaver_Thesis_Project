@@ -58,7 +58,7 @@
                             placeholder="Contact*"><br>
                         <input class="form-control" type="email" name="email" id="email" required
                             placeholder="Email*"><br>
-                        <!-- <input class="form-control" type="text" name="city" id="city" required placeholder="City"><br> -->
+                    
                         <input class="form-control" type="text" name="location" id="location" required
                             placeholder="Location*"><br>
                         <div id="map" style="height: 150px; width: 100%;"></div>
@@ -80,10 +80,6 @@
                         <input type="submit" value="ASK FOR HELP" class="btn btn-danger btn-lg bold">
                         <br><br>
 
-
-                        <!-- @if(session('success'))
-                            <p style="color: green;">{{ session('success') }}</p>
-                        @endif -->
 
                     </div>
 
