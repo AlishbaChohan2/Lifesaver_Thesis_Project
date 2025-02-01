@@ -46,10 +46,19 @@
     <p>Welcome, <strong>{{ session('admin_name') }} !</strong> </p>
    <a href="{{ route('logout.admin') }}" class="btn btn-sm logout-btn mt-4">Logout</a>
     <h3 class="mt-4">User Records     </h3>
-    
     <h5 class="mt-4">Total Records: <span class="badge bg-primary">{{ $submissions->count() }}</span></h5>
+    
+    <form id="searchForm" class="mb-4">
+    <div class="input-group">
+        <input type="text" id="emailSearch" class="form-control" placeholder="Search by Email">
+        
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+    </form>
+    <button type="button" id="clearSearch" class="btn btn-secondary">Clear Search</button>
+
     <div class="table-responsive mt-3">
-        <table class="table table-striped">
+        <table class="table table-striped" id="submissionsTable">
             <thead>
                 <tr>
                     <th>Sr. No.</th>
@@ -62,13 +71,14 @@
                     <th>Email</th>
                     <th>Location</th>
                     <th>Symptoms</th>
+                    <th>AI Advice</th>
                     <th>Ambulance Called</th>
                     <th>Police Called</th>
                 </tr>
             </thead>
             <tbody>
             @forelse($submissions as $index => $submission)
-                <tr>
+                <tr data-email="{{ $submission->email }}" data-date="{{ $submission->created_at->format('Y-m-d') }}">
                     <td>{{ $index + 1 }}</td>
                     <td>{{ $submission->id }}</td>
                     <td>{{ $submission->created_at->format('d-m-Y H:i') }}</td>
@@ -79,6 +89,7 @@
                     <td>{{ $submission->email }}</td>
                     <td>{{ $submission->location }}</td>
                     <td>{{ $submission->symptoms }}</td>
+                    <td>{{ $submission->advice }}</td>
                     <td>{{ $submission->ambulance_needed ? 'Yes' : 'No' }}</td>
                     <td>{{ $submission->police_needed ? 'Yes' : 'No' }}</td>
                 </tr>
@@ -93,6 +104,46 @@
 
     
 </div>
+
+<!-- Include the search script -->
+<script >
+    document.getElementById('searchForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get the email search value
+    const emailSearch = document.getElementById('emailSearch').value.toLowerCase();
+
+    // Get all rows in the table
+    const rows = document.querySelectorAll('#submissionsTable tbody tr');
+
+    rows.forEach(function(row) {
+        // Get email from the row's data-email attribute
+        const email = row.getAttribute('data-email').toLowerCase();
+
+        // Check if the email matches the search query
+        const matchesEmail = emailSearch ? email.includes(emailSearch) : true;
+
+        // Toggle row visibility based on email match
+        if (matchesEmail) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+
+
+</script>
+
+<!-- Include the clear search script -->
+<script> document.getElementById('clearSearch').addEventListener('click', function() {
+    // Clear search input values
+    document.getElementById('emailSearch').value = '';
+
+    // Trigger search form submit to reset the table
+    document.getElementById('searchForm').submit();
+});
+</script>
 
 </body>
 </html>
