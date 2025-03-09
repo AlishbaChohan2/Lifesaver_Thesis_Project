@@ -1,4 +1,4 @@
-<div id="demo" class="carousel slide ss" data-bs-ride="carousel">
+<div id="demo" class="carousel slide ss" data-bs-ride="carousel" data-bs-interval="4000">
 
     <!-- Indicators/dots -->
     <div class="carousel-indicators">
