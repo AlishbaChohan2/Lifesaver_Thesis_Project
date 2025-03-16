@@ -72,7 +72,9 @@ class FormController extends Controller
             $message = "New Emergency Request\n"
             . "Name: " . $request->name . "\n"
             . "Age: " . $request->age . "\n"
+            . "Gender: " . $request->gender . "\n"
             . "Contact: " . $request->contact . "\n"
+            . "Location: " . $request->location . "\n"
             . "Symptoms: " . $request->symptoms . "\n"
             . "Ambulance Needed: " . $request->ambulance_needed . "\n"
             . "Police Needed: " . $request->police_needed . "\n";
